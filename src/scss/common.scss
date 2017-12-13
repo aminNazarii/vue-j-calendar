@@ -1,0 +1,148 @@
+.date-picker-container {
+  font-size: 13px;
+  width: 265px;
+  display: block;  border-radius: 5px;
+  min-height: 230px;
+  box-shadow: 0 3px 25px rgba(0, 0, 0, .5);
+  font-family: Tahoma;
+  position: absolute;
+
+
+  /*** Common ***/
+  .display-inb {
+    display: inline-block;
+  }
+
+  .ta-left {
+    text-align: left;
+    float: left;
+  }
+
+  .ta-center {
+    text-align: center;
+  }
+
+  .ta-right {
+    text-align: right;
+    float: right;
+  }
+
+  .direction-rtl {
+    direction: rtl;
+  }
+
+  .direction-ltr {
+    direction: ltr;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .header {
+    color: #5C6063;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #F3F3F3;
+
+    .top {
+      padding: 3px 0 20px 0;
+    }
+
+    .btn-prev-month {
+      cursor: pointer;
+    }
+
+    .year {
+      text-align: center;
+      font-size: 18px;
+      color: #bbb;
+    }
+
+    .month {
+      color: #bbb;
+    }
+
+    .btn-next-month {
+      cursor: pointer;
+    }
+
+      .input-year {
+        float: left;
+        width: 40px;
+        text-align: left;
+        border: 1px solid #eeeeee;
+        color: #555;
+        font-size: 16px;
+        border-radius: 3px;
+      }
+
+  }
+
+  .body {
+    padding: 10px;
+
+    .weekday {
+      font-size: 12px;
+      color: #475059;
+    }
+
+    .row {
+      .cell {
+        text-align: center;
+        padding: 7px 8px;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        color: #656A70;
+
+        &:hover {
+          transition: 0.4s;
+          background-color: #F3F3F3;
+        }
+      }
+
+      .today {
+        background-color: #D45A21;
+        color: #fff !important;
+      }
+    }
+
+    .selected {
+      border: 1px solid #FCADAF !important;
+    }
+
+    .disable {
+      color: #D0CFCD !important;
+    }
+
+    .holiday {
+      color: #f00 !important;
+    }
+
+    .disabled-holiday {
+      color: #FCADAF !important;
+    }
+
+  }
+
+  .footer {
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 0 0 5px 5px;
+    border-top: 1px solid #F3F3F3;
+
+    .btn-today {
+      display: inline-block;
+      background-color: #D45A21;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin: 10px;
+    }
+  }
+
+}
