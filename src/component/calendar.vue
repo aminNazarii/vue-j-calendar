@@ -100,7 +100,11 @@
 
             let starterDay = moment();
             if (this.default) {
-                starterDay = this.default;
+                if(typeof this.default === 'string'){
+                    starterDay = moment(this.default, this.$calendar.format[this.$calendar.locale].YYYYMMDD);
+                }else{
+                    starterDay = this.default;
+                }
             }
 
             //get year month

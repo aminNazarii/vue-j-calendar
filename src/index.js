@@ -1,5 +1,6 @@
 import languages from './languages';
 import calendar from './component/calendar.vue';
+import moment from 'moment-jalaali';
 
 export default {
     install (Vue, options) {
@@ -7,9 +8,11 @@ export default {
 
         let newOptions = {
             locale: 'fa',
+            visible: false,
             languages: languages,
             format: {
                 fa: {
+                    YYYYMMDD: 'jYYYY-jMM-jDD',
                     Year: 'jYear',
                     Month: 'jMonth',
                     Day: 'jDay',
@@ -22,6 +25,7 @@ export default {
                     D: 'jD'
                 },
                 en: {
+                    YYYYMMDD: 'YYYY-MM-DD',
                     Year: 'Year',
                     Month: 'Month',
                     Day: 'Day',
