@@ -75,7 +75,7 @@
                 months: [],
                 year: null,
                 currentDate: moment(),
-                visible: true,
+                visible: false,
                 selectedMonth: null,
 
                 visibleGoToYear: false,

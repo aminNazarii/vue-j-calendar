@@ -7,7 +7,6 @@ export default {
 
         let newOptions = {
             locale: 'fa',
-            visible: false,
             languages: languages,
             format: {
                 fa: {
