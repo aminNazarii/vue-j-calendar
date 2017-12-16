@@ -10,13 +10,20 @@
     "vue",
     "jalali"
   ],
-  "author": "Amin nazari <aminnazari55@gmail.com>",
+  "author": {
+    "name": "Amin nazari",
+    "email": "aminnazari55@gmail.com"
+  },
   "contributors": [
     "Hooman naghiee <me@hooman.pro> (hooman.pro)",
     "Vahid davari <info.davari@gmail.com>"
   ],
+  "bugs": {
+    "url": "https://github.com/aminNazarii/vue-j-calendar/issues"
+  },
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "laravel-mix": "^1.6.2",
     "lodash": "^4.17.4",
     "moment-jalaali": "^0.7.2",

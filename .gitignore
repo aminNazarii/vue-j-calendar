@@ -5,3 +5,4 @@ yarn.lock
 src/app.js
 src/bootstrap.js
 src/component/layout.vue
+webpack.mix.js
