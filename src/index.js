@@ -39,7 +39,6 @@ export default {
 
         let newOptions = {
             locale: 'fa',
-            visible: false,
             languages: languages,
             format: {
                 fa: {
@@ -71,16 +70,12 @@ export default {
             },
         };
 
-        if (options.languages) {
+        if (_.has(options, 'languages')) {
             newOptions.languages = options.languages;
         }
 
-        if (options.locale) {
+        if (_.has(options, 'locale')) {
             newOptions.locale = options.locale;
-        }
-
-        if (options.visible) {
-            newOptions.visible = options.visible;
         }
 
         Vue.prototype.$calendar = newOptions;
