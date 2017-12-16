@@ -66,10 +66,9 @@
     </div>
 </template>
 
-
 <script>
     import moment from 'moment-jalaali';
-    import veeClose from '../directives/close';
+
     export default {
         name: 'calendar',
         data() {
@@ -292,9 +291,6 @@
             closeCalendar() {
                 this.visible = false;
             },
-        },
-        directives: {
-            "click-outside": veeClose
         }
     }
 </script>
