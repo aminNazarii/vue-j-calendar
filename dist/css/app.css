@@ -1,3 +1,11 @@
+.direction-rtl {
+  direction: rtl;
+}
+
+.direction-ltr {
+  direction: ltr;
+}
+
 .date-picker-container {
   font-size: 13px;
   width: 265px;
@@ -5,7 +13,7 @@
   border-radius: 5px;
   min-height: 230px;
   -webkit-box-shadow: 0 3px 25px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 3px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 25px rgba(0, 0, 0, 0.5);
   font-family: Tahoma;
   position: absolute;
   /*** Common ***/
@@ -27,14 +35,6 @@
 .date-picker-container .ta-right {
   text-align: right;
   float: right;
-}
-
-.date-picker-container .direction-rtl {
-  direction: rtl;
-}
-
-.date-picker-container .direction-ltr {
-  direction: ltr;
 }
 
 .date-picker-container input[type=number]::-webkit-inner-spin-button,
