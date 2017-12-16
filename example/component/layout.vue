@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>{{selectedDay.format('jYYYY-jMM-jDD')}}</div>
+        <div v-if="selectedDay">{{selectedDay.format('YYYY-MM-DD')}}</div>
         <calendar :default="currentDate" @change="selectDay"></calendar>
     </div>
 </template>

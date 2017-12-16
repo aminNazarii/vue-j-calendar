@@ -1,10 +1,11 @@
 <style lang="scss">
-    @import "../scss/app.scss";
+    @import '../../dist/css/app.css';
 </style>
 
 <template>
     <div>
-        <input v-model="selectedDay.format('jYYYY-jMM-jDD')" @click="visible = true">
+        <input v-if="$calendar.locale == 'fa'" :value="selectedDay.format('jYYYY-jMM-jDD')" @click="visible = true">
+        <input v-else :value="selectedDay.format('YYYY-MM-DD')" @click="visible = true">
 
         <div v-if="visible" v-click-outside="closeCalendar" id="vueDatePicker" class="date-picker-container"
              :class="{'direction-rtl': $calendar.locale == 'fa', 'direction-ltr': $calendar.locale != 'fa'}">
@@ -12,7 +13,7 @@
             <div class="header ta-center">
                 <div class="top ta-center">
                     <select v-model="selectedMonth" @change="goToMonth(selectedMonth)">
-                        <option v-for="(month) in months" :value="month.clone().locale('en').format($calendar.format[$calendar.locale].M)" >{{month.format($calendar.format[$calendar.locale].MMMM)}}</option>
+                        <option v-for="month in months" :value="month.clone().locale('en').format($calendar.format[$calendar.locale].M)" >{{month.format($calendar.format[$calendar.locale].MMMM)}}</option>
                     </select>
                 </div>
                 <div class="display-inb ta-right">
