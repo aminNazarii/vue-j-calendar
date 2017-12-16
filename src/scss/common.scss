@@ -1,3 +1,11 @@
+.direction-rtl {
+  direction: rtl !important;
+}
+
+.direction-ltr {
+  direction: ltr !important;
+}
+
 .date-picker-container {
   font-size: 13px;
   width: 265px;
@@ -25,14 +33,6 @@
   .ta-right {
     text-align: right;
     float: right;
-  }
-
-  .direction-rtl {
-    direction: rtl;
-  }
-
-  .direction-ltr {
-    direction: ltr;
   }
 
   input[type=number]::-webkit-inner-spin-button,
@@ -69,15 +69,15 @@
       cursor: pointer;
     }
 
-      .input-year {
-        float: left;
-        width: 40px;
-        text-align: left;
-        border: 1px solid #eeeeee;
-        color: #555;
-        font-size: 16px;
-        border-radius: 3px;
-      }
+    .input-year {
+      float: left;
+      width: 40px;
+      text-align: left;
+      border: 1px solid #eeeeee;
+      color: #555;
+      font-size: 16px;
+      border-radius: 3px;
+    }
 
   }
 

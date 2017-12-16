@@ -1,3 +1,7 @@
+<style lang="scss">
+    @import "../scss/app.scss";
+</style>
+
 <template>
     <div>
         <input v-model="selectedDay.format('jYYYY-jMM-jDD')" @click="visible = true">
