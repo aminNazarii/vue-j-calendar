@@ -45,7 +45,7 @@
                         {{less(titles)}}
                     </td>
                 </tr>
-                <tr v-for="week in monthDays" class="row">
+                <tr v-for="week in monthDays" class="week-days-row">
                     <td v-for="day in week" class="cell" @click="selectDay(day.date)"
                         :class="{
                             'selected': day.date.format('YYYYMMDD') == currentDate.format('YYYYMMDD'),

@@ -5,3 +5,5 @@ src/app.js
 src/bootstrap.js
 src/component/layout.vue
 webpack.mix.js
+dist/js
+dist/mix-manifest.json
