@@ -29,8 +29,9 @@
                         <span class="year" v-else @click="showGoToYear"> {{currentDate.format('YYYY')}} </span>
                     </span>
 
-                    <input v-else-if="visibleGoToYear" id="txtGoToYear" v-model="year" v-on:keyup.13="goToYear" type="number" class="input-year" min="1300" autofocus>
-
+                    <form class="frm-go-year" v-else-if="visibleGoToYear" onsubmit="event.preventDefault();">
+                        <input id="txtGoToYear" v-model="year" v-on:keyup.13="goToYear" type="number" class="input-year" min="1300" autofocus>
+                    </form>
                 </div>
 
                 <div class="display-inb ta-left">
