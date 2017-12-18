@@ -4,13 +4,13 @@
 
 <template>
     <div>
-        <input v-if="$calendar.locale == 'fa'" :value="selectedDay.format('jYYYY-jMM-jDD')" @click="visible = true">
-        <input v-else :value="selectedDay.format('YYYY-MM-DD')" @click="visible = true">
+        <input class="txtDatePicker" v-if="$calendar.locale == 'fa'" :value="selectedDay.format('jYYYY-jMM-jDD')" @click="visible = !visible">
+        <input class="txtDatePicker" v-else :value="selectedDay.format('YYYY-MM-DD')" @click="visible = !visible">
 
-        <div v-if="visible" v-click-outside="closeCalendar" id="vueDatePicker" class="date-picker-container"
+        <div v-if="visible" id="vueDatePicker" class="date-picker-container"
              :class="{'direction-rtl': $calendar.locale == 'fa', 'direction-ltr': $calendar.locale != 'fa'}">
             <!--calendar header-->
-            <div class="header ta-center">
+            <div class="date-picker-header ta-center">
                 <div class="top ta-center">
                     <select v-model="selectedMonth" @change="goToMonth(selectedMonth)">
                         <option v-for="month in months" :value="month.clone().locale('en').format($calendar.format[$calendar.locale].M)" >{{month.format($calendar.format[$calendar.locale].MMMM)}}</option>
@@ -25,11 +25,11 @@
                     <span class="month"  v-else>{{currentDate.format('MMMM')}}</span>
 
                     <span v-if="!visibleGoToYear">
-                        <span class="year" v-if="$calendar.locale === 'fa'" @click="visibleGoToYear = !visibleGoToYear"> {{currentDate.format('jYYYY')}} </span>
-                        <span class="year" v-else @click="visibleGoToYear = !visibleGoToYear"> {{currentDate.format('YYYY')}} </span>
+                        <span class="year" v-if="$calendar.locale === 'fa'" @click="showGoToYear"> {{currentDate.format('jYYYY')}} </span>
+                        <span class="year" v-else @click="showGoToYear"> {{currentDate.format('YYYY')}} </span>
                     </span>
 
-                    <input v-if="visibleGoToYear" v-click-outside="closeGoToYear" v-model="year" v-on:keyup.13="goToYear" type="number" class="input-year" min="1300" autofocus>
+                    <input v-else-if="visibleGoToYear" id="txtGoToYear" v-model="year" v-on:keyup.13="goToYear" type="number" class="input-year" min="1300" autofocus>
 
                 </div>
 
@@ -39,7 +39,7 @@
             </div>
 
             <!--calendar body-->
-            <table class="body">
+            <table class="date-picker-body">
                 <tr>
                     <td class="weekday" v-for="titles in calendarText.dayTitles">
                         {{less(titles)}}
@@ -50,8 +50,8 @@
                         :class="{
                             'selected': day.date.format('YYYYMMDD') == currentDate.format('YYYYMMDD'),
                             'holiday': day.holiday,
-                            'disable': day.disabled,
-                            'disabled-holiday': day.holiday && day.disabled,
+                            'inActive': day.inActived,
+                            'disabled-holiday': day.holiday && day.inActived,
                             'today': day.date.format('YYYYMMDD') === momentNow.format('YYYYMMDD')
                         }">
                         <span v-if="$calendar.locale === 'fa'">{{day.date.format('jD')}}</span>
@@ -59,7 +59,7 @@
                     </td>
                 </tr>
             </table>
-            <div class="footer">
+            <div class="date-picker-footer">
                 <span @click="goToday" class="btn-today">{{calendarText.text.today}}</span>
             </div>
         </div>
@@ -153,7 +153,7 @@
                 while (this.currentDate.clone().endOf(this.$calendar.format[moment.locale()].Month).format(this.$calendar.format[moment.locale()].YMD) !== monthDays.format(this.$calendar.format[moment.locale()].YMD)) {
                     monthDays.add(1, 'd');
                     this.monthDays.push({
-                        disabled: false,
+                        inActived: false,
                         holiday: this.checkForHoliday(monthDays),
                         date: monthDays.clone()
                     });
@@ -179,7 +179,7 @@
                 while (prevMonthStart.format(this.$calendar.format[moment.locale()].YMD) !== prevMonthDay.format(this.$calendar.format[moment.locale()].YMD)) {
                     prevMonthDay.subtract(1, 'd');
                     this.monthDays.unshift({
-                        disabled: true,
+                        inActived: true,
                         holiday: this.checkForHoliday(prevMonthDay),
                         date: prevMonthDay.clone()
                     });
@@ -189,7 +189,7 @@
                 let nextMonthStart = this.currentDate.clone().endOf(this.$calendar.format[moment.locale()].Month).add(1, 'd');
                 while (this.monthDays.length % 7 !== 0) {
                     this.monthDays.push({
-                        disabled: true,
+                        inActived: true,
                         holiday: this.checkForHoliday(nextMonthStart),
                         date: nextMonthStart.clone()
                     });
@@ -211,10 +211,12 @@
                 this.currentDate = day;
                 this.selectedDay = this.currentDate;
                 this.$emit('change', this.currentDate)
+                this.closeCalendar();
             },
             goToday() {
                 this.init();
                 this.getMonthDays();
+                this.selectDay(this.currentDate);
             },
             goToMonth(month) {
                 if (this.$calendar.locale === 'fa') {
@@ -225,20 +227,20 @@
                 this.getMonthDays();
             },
             goToYear() {
-                if (!moment(this.year + '/1/1',).isValid() || !this.year) {
+                if (!moment(this.year + '-01-01',).isValid() || !this.year) {
                     return false;
                 }
 
                 if (this.$calendar.locale === 'fa') {
-                    this.currentDate = moment(this.year + '/1/1', 'jYYYY/jMM/jDD'); //jalali
+                    this.currentDate = moment(this.year + '/1/1', 'jYYYY/jM/jD'); //jalali
                 } else {
                     this.currentDate.set('year', this.year); //georgian
                 }
                 this.getMonthDays();
                 this.visibleGoToYear = false;
             },
-            closeGoToYear() {
-                this.visibleGoToYear = false;
+            showGoToYear() {
+                this.visibleGoToYear = true;
             },
             less(value) {
                 return value.substr(0, 3);

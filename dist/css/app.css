@@ -7,6 +7,7 @@
 }
 
 .date-picker-container {
+  overflow: hidden;
   font-size: 13px;
   width: 265px;
   display: block;
@@ -16,6 +17,7 @@
           box-shadow: 0 3px 25px rgba(0, 0, 0, 0.5);
   font-family: Tahoma;
   position: absolute;
+  z-index: 99999999;
   /*** Common ***/
 }
 
@@ -42,7 +44,7 @@
   -webkit-appearance: none;
 }
 
-.date-picker-container .header {
+.date-picker-container .date-picker-header {
   color: #5C6063;
   border-radius: 5px 5px 0 0;
   padding: 10px;
@@ -50,48 +52,58 @@
   border-bottom: 1px solid #F3F3F3;
 }
 
-.date-picker-container .header .top {
+.date-picker-container .date-picker-header .top {
   padding: 3px 0 20px 0;
 }
 
-.date-picker-container .header .btn-prev-month {
+.date-picker-container .date-picker-header .btn-prev-month {
   cursor: pointer;
 }
 
-.date-picker-container .header .year {
+.date-picker-container .date-picker-header .year {
   text-align: center;
   font-size: 18px;
   color: #bbb;
 }
 
-.date-picker-container .header .month {
+.date-picker-container .date-picker-header .month {
   color: #bbb;
 }
 
-.date-picker-container .header .btn-next-month {
+.date-picker-container .date-picker-header .btn-next-month {
   cursor: pointer;
 }
 
-.date-picker-container .header .input-year {
-  float: left;
-  width: 40px;
+.date-picker-container .date-picker-header .input-year {
+  float: left !important;
+  width: 40px !important;
   text-align: left;
-  border: 1px solid #eeeeee;
   color: #555;
   font-size: 16px;
+  height: 20px !important;
+  border: 1px solid #eee !important;
   border-radius: 3px;
+  margin-right: 4px !important;
+  padding: 0 !important;
 }
 
-.date-picker-container .body {
-  padding: 10px;
+.date-picker-container .date-picker-header .input-year :focus {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.date-picker-container .body .weekday {
+.date-picker-container .date-picker-body {
+  padding: 9px;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.date-picker-container .date-picker-body .weekday {
   font-size: 12px;
   color: #475059;
 }
 
-.date-picker-container .body .week-days-row .cell {
+.date-picker-container .date-picker-body .week-days-row .cell {
   text-align: center;
   padding: 7px 8px;
   border: 1px solid transparent;
@@ -100,41 +112,41 @@
   color: #656A70;
 }
 
-.date-picker-container .body .week-days-row .cell:hover {
+.date-picker-container .date-picker-body .week-days-row .cell:hover {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   background-color: #F3F3F3;
 }
 
-.date-picker-container .body .week-days-row .today {
+.date-picker-container .date-picker-body .week-days-row .today {
   background-color: #D45A21;
   color: #fff !important;
 }
 
-.date-picker-container .body .selected {
+.date-picker-container .date-picker-body .selected {
   border: 1px solid #FCADAF !important;
 }
 
-.date-picker-container .body .disable {
+.date-picker-container .date-picker-body .inActive {
   color: #D0CFCD !important;
 }
 
-.date-picker-container .body .holiday {
+.date-picker-container .date-picker-body .holiday {
   color: #f00 !important;
 }
 
-.date-picker-container .body .disabled-holiday {
+.date-picker-container .date-picker-body .inactive-holiday {
   color: #FCADAF !important;
 }
 
-.date-picker-container .footer {
+.date-picker-container .date-picker-footer {
   text-align: center;
   background-color: #FFFFFF;
   border-radius: 0 0 5px 5px;
   border-top: 1px solid #F3F3F3;
 }
 
-.date-picker-container .footer .btn-today {
+.date-picker-container .date-picker-footer .btn-today {
   display: inline-block;
   background-color: #D45A21;
   color: #fff;

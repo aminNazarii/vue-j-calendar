@@ -1,6 +1,6 @@
 {
   "name": "vue-j-calendar",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "vue js date time picker without jquery",
   "main": "src/index.js",
   "keywords": [
