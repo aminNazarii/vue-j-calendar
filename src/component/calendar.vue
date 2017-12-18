@@ -4,8 +4,8 @@
 
 <template>
     <div>
-        <input class="txtDatePicker" v-if="$calendar.locale == 'fa'" :value="selectedDay.format('jYYYY-jMM-jDD')" @click="visible = !visible" disabled>
-        <input class="txtDatePicker" v-else :value="selectedDay.format('YYYY-MM-DD')" @click="visible = !visible" disabled>
+        <span class="txtDatePicker" v-if="$calendar.locale == 'fa'" @click="visible = !visible"> {{selectedDay.format('jYYYY-jMM-jDD')}} </span>
+        <span class="txtDatePicker" v-else @click="visible = !visible">{{selectedDay.format('YYYY-MM-DD')}}</span>
 
         <div v-if="visible" id="vueDatePicker" class="date-picker-container"
              :class="{'direction-rtl': $calendar.locale == 'fa', 'direction-ltr': $calendar.locale != 'fa'}">

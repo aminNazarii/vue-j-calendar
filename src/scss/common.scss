@@ -6,6 +6,19 @@
   direction: ltr !important;
 }
 
+.txtDatePicker {
+  display: inline-block;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: #555;
+
+  :focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+  }
+}
+
 .date-picker-container {
   overflow: hidden;
   font-size: 13px;
