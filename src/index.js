@@ -1,25 +1,17 @@
 import languages from './languages';
 import calendar from './component/calendar.vue';
-import moment from 'moment-jalaali';
 
 export default {
-    install (Vue, options) {
+
+    install: function (Vue, options) {
         Vue.component('calendar', calendar);
 
         // Directives
         Vue.directive('click-outside', {
             bind: function (el, binding, vNode) {
-                // Provided expression must evaluate to a function.
-                if (typeof binding.value !== 'function') {
-                    const compName = vNode.context.name;
-                    let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`;
-                    if (compName) {
-                        warn += `Found in component '${compName}'`
-                    }
-                }
                 // Define Handler and cache it on the element
                 const bubble = binding.modifiers.bubble;
-                const handler = (e) => {
+                const handler = function (e) {
                     if (bubble || (!el.contains(e.target) && el !== e.target)) {
                         binding.value(e)
                     }
@@ -37,7 +29,7 @@ export default {
             }
         });
 
-        let newOptions = {
+        Vue.prototype.$calendar = {
             locale: 'fa',
             languages: languages,
             format: {
@@ -71,13 +63,11 @@ export default {
         };
 
         if (_.has(options, 'languages')) {
-            newOptions.languages = options.languages;
+            Vue.prototype.$calendar.languages = options.languages;
         }
 
         if (_.has(options, 'locale')) {
-            newOptions.locale = options.locale;
+            Vue.prototype.$calendar.locale = options.locale;
         }
-
-        Vue.prototype.$calendar = newOptions;
     }
 }
